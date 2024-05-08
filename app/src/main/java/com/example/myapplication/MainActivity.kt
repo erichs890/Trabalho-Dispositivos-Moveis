@@ -7,8 +7,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import com.example.myapplication.databinding.ActivityFuncBinding
-import com.example.myapplication.view.Entrada
+import com.example.myapplication.view.Primeira
+import com.example.myapplication.view.EntradaFunc
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.Firebase
 
 class MainActivity : Activity() {
 
@@ -25,23 +27,29 @@ class MainActivity : Activity() {
             val cadastro = binding.editCadastro.text.toString()
             val senha = binding.editSenha.text.toString()
 
-            when{
+            when {
                 cadastro.isEmpty() -> {
-                    mensagem(it,"Coloque o seu cadastro!")
+                    mensagem(it, "Coloque o seu cadastro!")
 
-                }senha.isEmpty() -> {
-                    mensagem(it,"Preencha a Senha!")
-                }senha.length <= 6 -> {
+                }
+
+                senha.isEmpty() -> {
+                    mensagem(it, "Preencha a Senha!")
+                }
+
+                senha.length <= 6 -> {
                     mensagem(it, "A senha precisa ter pelo menos 7 caracteres! ")
-                }else -> {
-                    navegarPraEntrada(cadastro)
+                }
+
+                else -> {
+                    navegarPraEntradaFunc(cadastro)
 
                 }
             }
         }
     }
 
-    private fun mensagem(view: View, mensagem: String){
+    private fun mensagem(view: View, mensagem: String) {
         val snackbar = Snackbar.make(view, mensagem, Snackbar.LENGTH_SHORT)
         snackbar.setBackgroundTint(Color.parseColor("#FF0000"))
         snackbar.setTextColor(Color.parseColor("#FFFFFF"))
@@ -49,9 +57,10 @@ class MainActivity : Activity() {
 
     }
 
-    private fun navegarPraEntrada(cadastro: String){
-        val intent = Intent(this,Entrada::class.java)
-        intent.putExtra("Cadastro",cadastro)
+    private fun navegarPraEntradaFunc(cadastro: String) {
+        val intent = Intent(this, EntradaFunc::class.java)
+        intent.putExtra("cadastro", cadastro)
         startActivity(intent)
     }
+
 }

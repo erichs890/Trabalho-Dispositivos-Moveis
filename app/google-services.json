@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "716306996430",
+    "project_id": "espacocultural-b2ad4",
+    "storage_bucket": "espacocultural-b2ad4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716306996430:android:f98c50c7b4496b8b42849f",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkw67VeaMNOIR6qNUg-m7HXq0XgRpH0TM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
