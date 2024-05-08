@@ -6,61 +6,53 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.myapplication.databinding.ActivityFuncBinding
+import com.example.myapplication.databinding.ActivityPrimeiraBinding
+import com.example.myapplication.view.Agendamento
+import com.example.myapplication.view.Configuracoes
 import com.example.myapplication.view.Primeira
 import com.example.myapplication.view.EntradaFunc
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.Firebase
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityFuncBinding
+    private lateinit var binding: ActivityPrimeiraBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityFuncBinding.inflate(layoutInflater)
+        binding = ActivityPrimeiraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        replaceFragment(Home())
 
+        binding.bottomNavigationView.setOnItemSelectedListener {
 
-        binding.btEntrar.setOnClickListener {
-
-            val cadastro = binding.editCadastro.text.toString()
-            val senha = binding.editSenha.text.toString()
-
-            when {
-                cadastro.isEmpty() -> {
-                    mensagem(it, "Coloque o seu cadastro!")
-
-                }
-
-                senha.isEmpty() -> {
-                    mensagem(it, "Preencha a Senha!")
-                }
-
-                senha.length <= 6 -> {
-                    mensagem(it, "A senha precisa ter pelo menos 7 caracteres! ")
-                }
+            when(it.itemId){
+                R.id.inicio -> replaceFragment(Home())
+                R.id.funcionario -> replaceFragment(Funcs())
+                R.id.configuracao -> replaceFragment(Configs())
+                R.id.visita -> replaceFragment(Marcar())
 
                 else -> {
-                    navegarPraEntradaFunc(cadastro)
 
                 }
+
+
             }
+
+            true
+
         }
     }
 
-    private fun mensagem(view: View, mensagem: String) {
-        val snackbar = Snackbar.make(view, mensagem, Snackbar.LENGTH_SHORT)
-        snackbar.setBackgroundTint(Color.parseColor("#FF0000"))
-        snackbar.setTextColor(Color.parseColor("#FFFFFF"))
-        snackbar.show()
+    private fun replaceFragment(fragment: Fragment) {
+
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.layoutframe,fragment)
+        fragmentTransaction.commit()
 
     }
-
-    private fun navegarPraEntradaFunc(cadastro: String) {
-        val intent = Intent(this, EntradaFunc::class.java)
-        intent.putExtra("cadastro", cadastro)
-        startActivity(intent)
-    }
-
 }

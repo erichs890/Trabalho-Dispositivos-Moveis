@@ -47,13 +47,13 @@ class EntradaFunc : AppCompatActivity() {
             val obra1 = Obras(R.drawable.img1, "Amor e viver")
             listaObras.add(obra1)
 
-            val obra2 = Obras(R.drawable.img2, "Dias de Paz")
+            val obra2 = Obras(R.drawable.pint2, "Dias de Paz")
             listaObras.add(obra2)
 
-            val obra3 = Obras(R.drawable.img3, "Melanina do Prazer")
+            val obra3 = Obras(R.drawable.pint3, "Melanina do Prazer")
             listaObras.add(obra3)
 
-            val obra4 = Obras(R.drawable.img4, "Ruas Escuras")
+            val obra4 = Obras(R.drawable.pint4, "Ruas Escuras")
             listaObras.add(obra4)
         }
     }
