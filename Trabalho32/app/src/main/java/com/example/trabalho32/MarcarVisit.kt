@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import com.example.trabalho32.databinding.FragmentMarcarVisitBinding
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.firestore.FirebaseFirestor   e
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
 
 class MarcarVisit : Fragment() {
@@ -110,7 +110,7 @@ class MarcarVisit : Fragment() {
         snackbar.setTextColor(Color.WHITE)
         snackbar.show()
     }
-    private fun salvarAgendamento(view: View, cliente: String, data: String, hora: String, tipo: String){
+    private fun salvarAgendamento(view: String, cliente: String, data: String, hora: String, tipo: String){
         val db = FirebaseFirestore.getInstance()
         val dadosUsuario = hashMapOf(
             "cliente" to cliente,
