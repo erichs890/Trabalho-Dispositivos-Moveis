@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "720165611243",
+    "project_id": "espacocultural-a7cbf",
+    "storage_bucket": "espacocultural-a7cbf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720165611243:android:00a31da348abd6754bc0ae",
+        "android_client_info": {
+          "package_name": "com.example.trabalho32"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOJynzW98B4rAYCk9ahRILS0NJStngq90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
