@@ -84,15 +84,15 @@ class MarcarVisit : Fragment() {
                 }
 
                 visitaguiada.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-                    salvarAgendamento("Agendamento salvo com sucesso!", "Visitaguiada", data, hora)
+                    salvarAgendamento(it, "Agendamento salvo com sucesso!", "Visitaguiada", data, hora)
                 }
 
                 visitacego.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-                    salvarAgendamento("Agendamento salvo com sucesso!", "Visitacego", data, hora)
+                    salvarAgendamento(it,"Agendamento salvo com sucesso!", "Visitacego", data, hora)
                 }
 
                 visitaingles.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-                    salvarAgendamento("Agendamento salvo com sucesso!", "Visitaingles", data, hora)
+                    salvarAgendamento(it, "Agendamento salvo com sucesso!", "Visitaingles", data, hora)
                 }
                 else -> {
                     mensagem(it, "Escolha um tipo de Visita!", "#004af5")
@@ -110,15 +110,15 @@ class MarcarVisit : Fragment() {
         snackbar.setTextColor(Color.WHITE)
         snackbar.show()
     }
-    private fun salvarAgendamento(view: String, cliente: String, data: String, hora: String, tipo: String){
+    private fun salvarAgendamento(view: View,mensagem: String, data: String, hora: String, tipo: String){
         val db = FirebaseFirestore.getInstance()
         val dadosUsuario = hashMapOf(
-            "cliente" to cliente,
+            "mensagem" to mensagem,
             "data" to data,
             "hora" to hora,
             "tipo" to tipo
         )
-        db.collection("agendamentos").document(cliente).set(dadosUsuario).addOnSuccessListener {
+        db.collection("agendamentos").document(mensagem).set(dadosUsuario).addOnSuccessListener {
             mensagem(view, "Agendamento realizado com sucesso!", "#004af5")
         }.addOnFailureListener {
             mensagem(view, "Erro ao agendar!", "#FF0000")
