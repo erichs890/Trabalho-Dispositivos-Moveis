@@ -84,15 +84,15 @@ class MarcarVisit : Fragment() {
                 }
 
                 visitaguiada.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-                    salvarAgendamento(it, "Agendamento salvo com sucesso!", "Visitaguiada", data, hora)
+                    salvarAgendamento(it, "Agendamento salvo com sucesso!", data, hora, "Visitaguiada")
                 }
 
                 visitacego.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-                    salvarAgendamento(it,"Agendamento salvo com sucesso!", "Visitacego", data, hora)
+                    salvarAgendamento(it,"Agendamento salvo com sucesso!", data, hora, "Visitacego")
                 }
 
                 visitaingles.isChecked && data.isNotEmpty() && hora.isNotEmpty() -> {
-                    salvarAgendamento(it, "Agendamento salvo com sucesso!", "Visitaingles", data, hora)
+                    salvarAgendamento(it, "Agendamento salvo com sucesso!", data, hora, "Visitaingles")
                 }
                 else -> {
                     mensagem(it, "Escolha um tipo de Visita!", "#004af5")
