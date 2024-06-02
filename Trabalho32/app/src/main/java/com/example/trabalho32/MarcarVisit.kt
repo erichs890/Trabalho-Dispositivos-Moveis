@@ -110,19 +110,17 @@ class MarcarVisit : Fragment() {
         snackbar.setTextColor(Color.WHITE)
         snackbar.show()
     }
-    private fun salvarAgendamento(view: View,mensagem: String, data: String, hora: String, tipo: String){
+    private fun salvarAgendamento(view: View,mensagem: String, data: String, hora: String, tipo: String) {
         val db = FirebaseFirestore.getInstance()
         val dadosUsuario = hashMapOf(
-            "mensagem" to mensagem,
             "data" to data,
             "hora" to hora,
             "tipo" to tipo
         )
-        db.collection("agendamentos").document(mensagem).set(dadosUsuario).addOnSuccessListener {
+        db.collection("agendamentos").add(dadosUsuario).addOnSuccessListener {
             mensagem(view, "Agendamento realizado com sucesso!", "#004af5")
         }.addOnFailureListener {
             mensagem(view, "Erro ao agendar!", "#FF0000")
         }
     }
-
 }
