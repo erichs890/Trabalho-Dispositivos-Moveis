@@ -23,22 +23,27 @@ class Funcionario : Fragment() {
         binding = FragmentFuncionarioBinding.inflate(inflater, container, false)
 
         binding.btLogin.setOnClickListener {
-            val cadastro = binding.editCadastro.text.toString()
-            val senha = binding.editSenha.text.toString()
+            val emailInput = binding.editCadastro.text.toString()
+            val senhaInput = binding.editSenha.text.toString()
+            val emailPredefinido = "eitakk"
+            val senhaPredefinida = "123456"
 
             when {
-                cadastro.isEmpty() -> {
-                    mensagem(it, "Preencha o campo de cadastro!")
+                emailInput.isEmpty() -> {
+                    mensagem(it, "Preencha o campo de email!", "#FF0000")
                 }
-                senha.isEmpty() -> {
-                    mensagem(it, "Preencha o campo de senha!")
+                senhaInput.isEmpty() -> {
+                    mensagem(it, "Preencha o campo de senha!", "#FF0000")
                 }
-                senha.length < 6 -> {
-                    mensagem(it, "A senha deve ter pelo menos 6 caracteres!")
+                emailInput != emailPredefinido -> {
+                    mensagem(it, "Email incorreto!", "#FF0000")
+                }
+                senhaInput != senhaPredefinida -> {
+                    mensagem(it, "Senha incorreta!", "#FF0000")
                 }
                 else -> {
                     val intent = Intent(requireContext(), MainActivityFunc::class.java)
-                    intent.putExtra("cadastro", cadastro)
+                    intent.putExtra("email", emailInput)
                     startActivity(intent)
                 }
             }
@@ -47,11 +52,10 @@ class Funcionario : Fragment() {
         return binding.root
     }
 
-    private fun mensagem(view: View, mensagem: String) {
+    private fun mensagem(view: View, mensagem: String, cor: String) {
         val snackbar = Snackbar.make(view, mensagem, Snackbar.LENGTH_SHORT)
-        snackbar.setBackgroundTint(Color.parseColor("#FF0000"))
-        snackbar.setTextColor(Color.parseColor("#FFFFFF"))
+        snackbar.setBackgroundTint(Color.parseColor(cor))
+        snackbar.setTextColor(Color.WHITE)
         snackbar.show()
     }
-
 }

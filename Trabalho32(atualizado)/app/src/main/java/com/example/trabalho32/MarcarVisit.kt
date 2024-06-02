@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import com.example.trabalho32.databinding.FragmentMarcarVisitBinding
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.FirebaseFirestore
 import java.util.Calendar
 
 class MarcarVisit : Fragment() {
